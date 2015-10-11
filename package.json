@@ -1,0 +1,33 @@
+{
+  "name": "angular-browerify",
+  "version": "1.0.0",
+  "description": " ",
+  "readme": " ",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "npm run watch & npm run serve",
+    "test": "node node_modules/.bin/tap test/*.test.js --cov",
+
+    "serve": "cd src && live-server --no-browser",
+    "watch": "node node_modules/.bin/watchify src/app/app.js -o src/bundle.js",
+    "uglify": "node node_modules/.bin/browserify -t uglifyify src/bundle.js -o dist/bundle.min.js",
+    "build": "mkdir -p dist && npm run uglify && sed s/bundle/bundle.min/ src/index.html>dist/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/julien/angular-browserify.git"
+  },
+  "keywords": [
+    "angular",
+    "browserify"
+  ],
+  "author": "jcastelain <jcastelain@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "live-server": "^0.8.1",
+    "tap": "^2.1.1",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.4.0"
+  }
+}
